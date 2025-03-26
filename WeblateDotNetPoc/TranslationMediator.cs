@@ -13,7 +13,7 @@ namespace WeblateDotNetPoc
         void InitializeLanguages(string languageCode);
         string GetTranslationByKey(string key, string languageCode = null);
         Dictionary<string, string>GetTranslationsByLanguage(string languageCode = null);
-        string CreateTranslation(string key, string value);
+        string CreateTranslation(string value);
     }
     
     public class TranslationMediator : ITranslationMediator
@@ -69,17 +69,10 @@ namespace WeblateDotNetPoc
                     return result;
                 }
 
-                return key;
+                CreateTranslation(key);
+
+                return GetTranslationByKey(key, languageCode);
             }
-
-            /*InitializeLanguages(languageCode);
-
-            result = GetTranslationByKey(key, languageCode);
-
-            if (result != String.Empty)
-            {
-                return result;
-            }*/
 
             return key;
         }
@@ -106,15 +99,15 @@ namespace WeblateDotNetPoc
             return result;
         }
 
-        public string CreateTranslation(string key, string value)
+        public string CreateTranslation(string value)
         {
-            string baseUrl = $"{BASE_URL}/pt/file/?format=json";
+            string baseUrl = $"{BASE_URL}/pt/units/";
             
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    var requestBody = new { key = key, value = new[] { value }};
+                    var requestBody = new { key = value, value = new[] { value }};
 
                     string json = JsonConvert.SerializeObject(requestBody);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");

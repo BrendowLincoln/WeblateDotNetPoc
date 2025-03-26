@@ -10,7 +10,7 @@
 
     <div class="row">
         <span>Exemplos: </span>
-        <asp:Button runat="server" Text="<%$ Resources:Strings,create %>"/>
+        <asp:Button runat="server" Text="<%$ Resources:Strings,Temos uma problema! Aqui não tem tradução %>"/>
         <asp:Button runat="server" Text="<%$ Resources:Strings,save %>"/>
         <asp:Button runat="server" Text="<%$ Resources:Strings,edit %>"/>
         <asp:Button runat="server" Text="<%$ Resources:Strings,delete %>"/>

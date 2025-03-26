@@ -26,13 +26,8 @@ namespace WeblateDotNetPoc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-        
-        protected void Application_AcquireRequestState(object sender, EventArgs e)
-        {
-            
-        }
 
-        
+
         private static void ConfigureLightInject()
         {
             var container = new ServiceContainer();
