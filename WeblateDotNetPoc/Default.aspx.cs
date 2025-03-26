@@ -11,11 +11,9 @@ namespace WeblateDotNetPoc
 {
     public partial class _Default : Page
     {
-        private readonly ITranslationMediator _mediator;
-
         public _Default()
         {
-            _mediator = new TranslationMediator();
+          
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -46,8 +44,6 @@ namespace WeblateDotNetPoc
             if (!string.IsNullOrWhiteSpace(languageCode))
             {
                 Session["UserCulture"] = languageCode;
-
-                _mediator.InitializeLanguages(languageCode);
             }
         }
     }

@@ -26,20 +26,5 @@ namespace WeblateDotNetPoc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
-
-        private static void ConfigureLightInject()
-        {
-            var container = new ServiceContainer();
-
-            container.Register<ITranslationMediator, TranslationMediator>(new PerContainerLifetime());
-            container.EnableWebApi(GlobalConfiguration.Configuration);
-            container.EnablePerWebRequestScope();
-
-            // 🔥 Esta linha aqui é essencial para ExpressionBuilder
-            ServiceLocator.SetContainer(container);
-        }
-
-
     }
 }

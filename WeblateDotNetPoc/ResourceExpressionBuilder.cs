@@ -9,16 +9,8 @@ namespace WeblateDotNetPoc
     [ExpressionPrefix("Resources")]
     public class ResourceExpressionBuilder : ExpressionBuilder
     {
-        private static ITranslationMediator _translationMediator;
-
         public ResourceExpressionBuilder()
-        {
-            _translationMediator = new TranslationMediator();
-            
-            //Populando as traduções
-            string languageCode = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
-            _translationMediator.InitializeLanguages(languageCode);
-        }
+        { }
         
         public override bool SupportsEvaluate
         {
@@ -48,7 +40,7 @@ namespace WeblateDotNetPoc
         public static object GetRequestedValue(string expression)
         {
             var key = expression.Split(',')[1].Trim();
-            return _translationMediator.GetTranslationByKey(key);
+            return TranslationMediator.GetTranslationByKey(key);
         }
     }
 }
